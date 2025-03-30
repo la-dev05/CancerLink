@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 import { Heart } from "lucide-react";
 
@@ -10,7 +9,7 @@ const Footer = () => {
           <div className="space-y-4">
             <div className="flex items-center gap-2">
               <Heart className="h-5 w-5 text-cancer-purple" fill="#E5DEFF" />
-              <span className="text-lg font-bold">CancerCompass</span>
+              <span className="text-lg font-bold">CancerLink</span>
             </div>
             <p className="text-sm text-muted-foreground">
               Supporting your cancer care journey with community connections and expert resources.
@@ -78,12 +77,12 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/privacy" className="text-muted-foreground hover:text-foreground transition-colors">
+                <Link to="/privacy-policy" className="text-muted-foreground hover:text-foreground transition-colors">
                   Privacy
                 </Link>
               </li>
               <li>
-                <Link to="/terms" className="text-muted-foreground hover:text-foreground transition-colors">
+                <Link to="/terms-of-use" className="text-muted-foreground hover:text-foreground transition-colors">
                   Terms
                 </Link>
               </li>
@@ -123,7 +122,7 @@ const Footer = () => {
         </div>
         
         <div className="mt-12 pt-8 border-t text-center text-sm text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} CancerCompass. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} CancerLink. All rights reserved.</p>
           <p className="mt-2">
             <span className="text-xs">Disclaimer: This website provides general information and is not a substitute for professional medical advice.</span>
           </p>

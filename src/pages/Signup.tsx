@@ -66,7 +66,7 @@ export default function Signup() {
             </div>
             <CardTitle className="text-2xl">Create an account</CardTitle>
             <CardDescription>
-              Join CancerCompass to connect with cancer survivors and support resources
+              Join CancerLink to connect with cancer survivors and support resources
             </CardDescription>
           </CardHeader>
           <CardContent>

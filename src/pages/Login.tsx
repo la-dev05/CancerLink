@@ -57,7 +57,7 @@ export default function Login() {
             <div className="flex justify-center">
               <Heart className="h-8 w-8 text-cancer-purple" fill="#E5DEFF" />
             </div>
-            <CardTitle className="text-2xl">Log in to CancerCompass</CardTitle>
+            <CardTitle className="text-2xl">Log in to CancerLink</CardTitle>
             <CardDescription>
               Enter your credentials to access your account
             </CardDescription>

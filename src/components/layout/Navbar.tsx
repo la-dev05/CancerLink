@@ -26,7 +26,7 @@ const Navbar = () => {
         <div className="flex items-center gap-2">
           <Link to="/" className="flex items-center gap-2">
             <Heart className="h-6 w-6 text-cancer-purple" fill="#E5DEFF" />
-            <span className="text-xl font-bold text-foreground">CancerCompass</span>
+            <span className="text-xl font-bold text-foreground">CancerLink</span>
           </Link>
         </div>
 
