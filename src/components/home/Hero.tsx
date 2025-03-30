@@ -30,7 +30,7 @@ const Hero = () => {
               <div className="absolute inset-0 bg-gradient-to-tr from-cancer-purple-light via-cancer-pink-light to-cancer-blue-light opacity-70"></div>
               <div className="relative z-10 p-8">
                 <img 
-                  src="/placeholder.svg" 
+                  src="/1.png" 
                   alt="Supportive community for cancer care" 
                   className="w-full h-auto rounded-lg shadow-lg"
                 />
