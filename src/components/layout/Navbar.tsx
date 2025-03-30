@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Heart, MessageSquare, MapPin, FileText, Search } from "lucide-react";
+import { Menu, X, Heart, MessageSquare, FileText, Search } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { UserMenu } from "@/components/auth/UserMenu";
 
@@ -16,9 +16,8 @@ const Navbar = () => {
   const navLinks = [
     { name: "Find Survivors", path: "/survivors", icon: <Heart className="h-4 w-4 mr-2" /> },
     { name: "Community", path: "/community", icon: <MessageSquare className="h-4 w-4 mr-2" /> },
-    { name: "Find Care", path: "/care-locator", icon: <MapPin className="h-4 w-4 mr-2" /> },
+    { name: "Symptom-Based Care", path: "/symptom-care-locator", icon: <Search className="h-4 w-4 mr-2" /> },
     { name: "Symptoms", path: "/symptoms", icon: <FileText className="h-4 w-4 mr-2" /> },
-    { name: "AI Assistant", path: "/ai-assistant", icon: <Search className="h-4 w-4 mr-2" /> },
   ];
 
   return (

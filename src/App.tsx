@@ -8,9 +8,8 @@ import { AuthProvider } from "@/contexts/AuthContext";
 import Index from "./pages/Index";
 import Survivors from "./pages/Survivors";
 import Community from "./pages/Community";
-import CareLocator from "./pages/CareLocator";
+import SymptomCareLocator from "./pages/SymptomCareLocator";
 import Symptoms from "./pages/Symptoms";
-import AIAssistant from "./pages/AIAssistant";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import NotFound from "./pages/NotFound";
@@ -28,9 +27,8 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/survivors" element={<Survivors />} />
             <Route path="/community" element={<Community />} />
-            <Route path="/care-locator" element={<CareLocator />} />
+            <Route path="/symptom-care-locator" element={<SymptomCareLocator />} />
             <Route path="/symptoms" element={<Symptoms />} />
-            <Route path="/ai-assistant" element={<AIAssistant />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
