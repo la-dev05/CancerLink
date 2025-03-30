@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Heart, MessageSquare, FileText, Search, Pill, TestTube, Stethoscope } from "lucide-react";
+import { Menu, X, Heart, MessageSquare, FileText, Search, Pill, TestTube, Stethoscope, Video } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { UserMenu } from "@/components/auth/UserMenu";
 
@@ -18,6 +18,7 @@ const Navbar = () => {
     { name: "Find Care", path: "/symptom-care-locator", icon: <Search className="h-4 w-4 mr-2" /> },
     { name: "Get Medication", path: "/get-medicines", icon: <Pill className="h-4 w-4 mr-2" /> },
     { name: "Lab Tests", path: "/lab-tests", icon: <TestTube className="h-4 w-4 mr-2" /> },
+    { name: "Online Consultation", path: "/online-consultation", icon: <Video className="h-4 w-4 mr-2" /> },
     { name: "Symptoms", path: "/symptoms", icon: <FileText className="h-4 w-4 mr-2" /> },
     { name: "For Doctors", path: "/doctor-registration", icon: <Stethoscope className="h-4 w-4 mr-2" /> },
   ];
