@@ -4,12 +4,13 @@ import { Button } from "@/components/ui/button";
 import { Menu, X, Heart, MessageSquare, FileText, Search, Pill, TestTube, Stethoscope, Video, ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { UserMenu } from "@/components/auth/UserMenu";
+import { useNavScroll } from "@/hooks/useNavScroll";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const { scrollRef, handleScroll } = useNavScroll();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -27,26 +28,26 @@ const Navbar = () => {
   ];
 
   const checkScroll = () => {
-    if (scrollContainerRef.current) {
-      const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current;
+    if (scrollRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
       setCanScrollLeft(scrollLeft > 0);
       setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10);
     }
   };
 
-  const handleScroll = (direction: 'left' | 'right') => {
-    if (scrollContainerRef.current) {
+  const handleScrollDirection = (direction: 'left' | 'right') => {
+    if (scrollRef.current) {
       const scrollAmount = 300; // Adjust this value to control scroll distance
-      const targetScroll = scrollContainerRef.current.scrollLeft + (direction === 'left' ? -scrollAmount : scrollAmount);
-      scrollContainerRef.current.scrollTo({
+      const targetScroll = scrollRef.current.scrollLeft + (direction === 'left' ? -scrollAmount : scrollAmount);
+      scrollRef.current.scrollTo({
         left: targetScroll,
-        behavior: 'smooth'
+        behavior: scrollRef.current.style.scrollBehavior as 'smooth' | 'auto'
       });
     }
   };
 
   useEffect(() => {
-    const scrollContainer = scrollContainerRef.current;
+    const scrollContainer = scrollRef.current;
     if (scrollContainer) {
       let isDown = false;
       let startX: number;
@@ -89,9 +90,11 @@ const Navbar = () => {
       scrollContainer.addEventListener('mousemove', handleDragMove);
       scrollContainer.addEventListener('touchmove', handleDragMove);
 
-      // Add scroll event listener
-      scrollContainer.addEventListener('scroll', checkScroll);
-      checkScroll(); // Initial check
+      scrollContainer.addEventListener('scroll', () => {
+        handleScroll();
+        checkScroll();
+      });
+      checkScroll();
 
       return () => {
         scrollContainer.removeEventListener('mousedown', handleDragStart);
@@ -101,10 +104,10 @@ const Navbar = () => {
         scrollContainer.removeEventListener('touchend', handleDragEnd);
         scrollContainer.removeEventListener('mousemove', handleDragMove);
         scrollContainer.removeEventListener('touchmove', handleDragMove);
-        scrollContainer.removeEventListener('scroll', checkScroll);
+        scrollContainer.removeEventListener('scroll', handleScroll);
       };
     }
-  }, []);
+  }, [handleScroll]);
 
   return (
     <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -125,13 +128,13 @@ const Navbar = () => {
               "flex items-center h-full cursor-pointer",
               canScrollLeft ? "opacity-100" : "opacity-0 pointer-events-none"
             )}
-            onClick={() => handleScroll('left')}
+            onClick={() => handleScrollDirection('left')}
           >
             <ChevronLeft className="w-5 h-5 text-foreground/80 animate-pulse-subtle" />
           </div>
 
           <div 
-            ref={scrollContainerRef}
+            ref={scrollRef}
             className="flex items-center gap-6 overflow-x-auto px-4 py-2 no-scrollbar 
                      snap-x snap-mandatory scroll-smooth touch-pan-x w-full"
             style={{
@@ -164,7 +167,7 @@ const Navbar = () => {
               "flex items-center h-full cursor-pointer",
               canScrollRight ? "opacity-100" : "opacity-0 pointer-events-none"
             )}
-            onClick={() => handleScroll('right')}
+            onClick={() => handleScrollDirection('right')}
           >
             <ChevronRight className="w-5 h-5 text-foreground/80 animate-pulse-subtle" />
           </div>
