@@ -15,7 +15,7 @@ const Hero = () => {
               Connect with survivors, find specialized care centers, access symptom resources, and receive AI-powered support—all in one place.
             </p>
             <div className="flex flex-col sm:flex-row gap-3">
-              <Link to="/care-locator">
+              <Link to="/symptom-care-locator">
                 <Button size="lg" className="w-full sm:w-auto">Find Care Centers</Button>
               </Link>
               <Link to="/survivors">
