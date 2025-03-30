@@ -253,10 +253,6 @@ const Survivors = () => {
                 onChange={handleSearchChange}
               />
             </div>
-            <Button variant="outline">
-              <Filter className="h-4 w-4 mr-2" />
-              Filters
-            </Button>
           </div>
 
           <Tabs
