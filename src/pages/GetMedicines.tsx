@@ -117,13 +117,13 @@ const MedicationCard = ({ medication }: { medication: typeof medications.chemoth
           <div>
             <p className="text-sm text-muted-foreground">Market Price</p>
             <p className="text-lg font-semibold line-through text-muted-foreground">
-              ${medication.marketPrice}
+              ₹{medication.marketPrice}
             </p>
           </div>
           <div className="text-right">
             <p className="text-sm text-muted-foreground">Our Price</p>
             <p className="text-lg font-semibold text-green-600">
-              ${medication.ourPrice}
+              ₹{medication.ourPrice}
             </p>
           </div>
         </div>
