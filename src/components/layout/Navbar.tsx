@@ -2,8 +2,9 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Search, Heart, MessageSquare, MapPin, FileText, UserCircle } from "lucide-react";
+import { Menu, X, Heart, MessageSquare, MapPin, FileText, Search } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { UserMenu } from "@/components/auth/UserMenu";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -45,15 +46,7 @@ const Navbar = () => {
         </div>
 
         <div className="flex items-center gap-2">
-          <Link to="/login">
-            <Button variant="ghost" size="sm" className="hidden md:flex items-center gap-2">
-              <UserCircle className="h-4 w-4" />
-              Log in
-            </Button>
-          </Link>
-          <Link to="/signup">
-            <Button size="sm" className="hidden md:flex">Sign up</Button>
-          </Link>
+          <UserMenu />
           <Button variant="ghost" size="icon" className="md:hidden" onClick={toggleMenu}>
             {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </Button>
@@ -82,7 +75,7 @@ const Navbar = () => {
           <div className="flex flex-col gap-2 pt-2 border-t">
             <Link to="/login" onClick={() => setIsOpen(false)}>
               <Button variant="outline" className="w-full justify-start">
-                <UserCircle className="h-4 w-4 mr-2" />
+                <Heart className="h-4 w-4 mr-2" />
                 Log in
               </Button>
             </Link>
