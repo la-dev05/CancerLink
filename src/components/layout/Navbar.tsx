@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Heart, MessageSquare, FileText, Search, Pill, TestTube, Stethoscope, Video, ChevronLeft, ChevronRight, Home } from "lucide-react";
+import { Menu, X, Heart, MessageSquare, FileText, Search, Pill, TestTube, Stethoscope, Video, ChevronLeft, ChevronRight, Home, Shield } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { UserMenu } from "@/components/auth/UserMenu";
 import { useNavScroll } from "@/hooks/useNavScroll";
@@ -29,6 +29,11 @@ const Navbar = () => {
       name: "Accommodations", 
       path: "/accommodations", 
       icon: <Home className="h-4 w-4 mr-2" /> 
+    },
+    { 
+      name: "Cancer Insurance", 
+      path: "/cancer-insurance", 
+      icon: <Shield className="h-4 w-4 mr-2" /> 
     },
   ];
 

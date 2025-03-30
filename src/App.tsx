@@ -22,6 +22,7 @@ import DoctorRegistration from "./pages/DoctorRegistration";
 import DoctorApplicationForm from "./pages/DoctorApplicationForm";
 import OnlineConsultation from "./pages/OnlineConsultation";
 import Accommodations from "./pages/Accommodations";
+import CancerInsurance from "./pages/CancerInsurance";
 
 const queryClient = new QueryClient();
 
@@ -50,6 +51,7 @@ const App = () => (
             <Route path="/doctor-application" element={<DoctorApplicationForm />} />
             <Route path="/online-consultation" element={<OnlineConsultation />} />
             <Route path="/accommodations" element={<Accommodations />} />
+            <Route path="/cancer-insurance" element={<CancerInsurance />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
