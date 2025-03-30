@@ -1,36 +1,47 @@
-import React from 'react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import React from "react";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Heart, Search, MapPin, MessageSquare, FileText } from "lucide-react";
 
 const Features = () => {
   const features = [
     {
       title: "Connect with Survivors",
-      description: "Find and connect with cancer survivors who understand what you're going through.",
+      description:
+        "Find and connect with cancer survivors who understand what you're going through.",
       icon: Heart,
       path: "/survivors",
     },
     {
       title: "AI-Powered Symptom Checker",
-      description: "Use our AI assistant to understand your symptoms and find potential solutions.",
+      description:
+        "Use our AI assistant to understand your symptoms and find potential solutions.",
       icon: Search,
       path: "/ai-assistant",
     },
     {
       title: "Find Local Care",
-      description: "Locate specialized cancer care centers and professionals near you.",
+      description:
+        "Locate specialized cancer care centers and professionals near you.",
       icon: MapPin,
       path: "/care-locator",
     },
     {
       title: "Join the Community",
-      description: "Participate in community forums and discussions to share experiences and get support.",
+      description:
+        "Participate in community forums and discussions to share experiences and get support.",
       icon: MessageSquare,
       path: "/community",
     },
     {
       title: "Symptom Database",
-      description: "Access a comprehensive database of cancer-related symptoms and their management.",
+      description:
+        "Access a comprehensive database of cancer-related symptoms and their management.",
       icon: FileText,
       path: "/symptoms",
     },
@@ -49,11 +60,6 @@ const Features = () => {
                 </CardTitle>
                 <CardDescription>{feature.description}</CardDescription>
               </CardHeader>
-              <CardContent>
-                <a href={feature.path} className="text-sm text-muted-foreground hover:text-foreground underline underline-offset-4">
-                  Learn more
-                </a>
-              </CardContent>
             </Card>
           ))}
         </div>
