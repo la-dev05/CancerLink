@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Heart, MessageSquare, FileText, Search, Pill, TestTube, Stethoscope, Video, ChevronLeft, ChevronRight } from "lucide-react";
+import { Menu, X, Heart, MessageSquare, FileText, Search, Pill, TestTube, Stethoscope, Video, ChevronLeft, ChevronRight, Home } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { UserMenu } from "@/components/auth/UserMenu";
 import { useNavScroll } from "@/hooks/useNavScroll";
@@ -25,6 +25,11 @@ const Navbar = () => {
     { name: "Online Consultation", path: "/online-consultation", icon: <Video className="h-4 w-4 mr-2" /> },
     { name: "Symptoms", path: "/symptoms", icon: <FileText className="h-4 w-4 mr-2" /> },
     { name: "For Doctors", path: "/doctor-registration", icon: <Stethoscope className="h-4 w-4 mr-2" /> },
+    { 
+      name: "Accommodations", 
+      path: "/accommodations", 
+      icon: <Home className="h-4 w-4 mr-2" /> 
+    },
   ];
 
   const checkScroll = () => {
