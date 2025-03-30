@@ -22,7 +22,7 @@ const Footer = () => {
             <ul className="space-y-2 text-sm">
               <li>
                 <Link to="/survivors" className="text-muted-foreground hover:text-foreground transition-colors">
-                  Find Survivors
+                  Connect
                 </Link>
               </li>
               <li>
@@ -31,7 +31,7 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/care-locator" className="text-muted-foreground hover:text-foreground transition-colors">
+                <Link to="/symptom-care-locator" className="text-muted-foreground hover:text-foreground transition-colors">
                   Find Care
                 </Link>
               </li>
