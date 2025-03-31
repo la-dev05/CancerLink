@@ -38,8 +38,10 @@ export async function analyzeDisease(
   request: DiseaseAnalysisRequest
 ): Promise<DiseaseAnalysisResponse> {
   // Replace with your actual API key or use environment variable
+
   const apiKey =
     process.env.NEXT_PUBLIC_GEMINI_API_KEY || "Please enter your API key here";
+
 
   const endpoint =
     "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent";
