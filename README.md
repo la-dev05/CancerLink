@@ -48,7 +48,14 @@ This project is built with:
 - shadcn-ui
 - Tailwind CSS
 
-## **License**
+## License
+Copyright © 2025 Lakshya G. | All rights reserved. 
 
-&copy; Lakshya G. All rights reserved.
+Unauthorized use, reproduction, modification, or distribution of this software, in whole or in part, is strictly prohibited without prior written permission from the copyright holder.
+
+For licensing inquiries, please contact: lakshya.gupta.ug24@plaksha.edu.in 
+
+---
+
+**Feel free to reach out for support or feature suggestions!**
 
