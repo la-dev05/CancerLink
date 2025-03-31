@@ -1,6 +1,8 @@
-# CancerLink project
+# CancerLink
 
-This is a project that we built for E-summit hackethon that is being organized in plaksha
+CanceLink project started at E-summit hackathon organized by Plaksha University.
+
+Developers: Lakshya Gupta, Prajyot Raut
 
 CancerLink is an innovative web platform designed to empower individuals navigating cancer care by providing essential resources, survivor support, and AI-driven assistance. The platform connects patients with cancer survivors, offers access to specialized treatment centers, facilitates symptom awareness, and integrates AI for preliminary symptom analysis.
 
@@ -47,11 +49,3 @@ This project is built with
 - React
 - shadcn-ui
 - Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/dae621e5-4914-48af-a286-b50130459e9b) and click on Share -> Publish.
-
-## I want to use a custom domain - is that possible?
-
-We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
