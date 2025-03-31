@@ -150,13 +150,15 @@ const DoctorRegistration = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
             {verificationSteps.map((step, index) => (
               <div key={step.title} className="relative">
-                <div className="p-6 bg-muted rounded-lg space-y-2">
-                  <div className="text-4xl font-bold text-cancer-purple mb-4">{index + 1}</div>
-                  <h3 className="font-semibold">{step.title}</h3>
-                  <p className="text-sm text-muted-foreground">{step.description}</p>
+                <div className="p-6 bg-muted rounded-lg space-y-2 min-h-[180px] h-full flex flex-col">
+                  <div className="text-4xl font-bold text-cancer-purple shrink-0">{index + 1}</div>
+                  <div className="flex-grow flex flex-col justify-between">
+                    <h3 className="font-semibold">{step.title}</h3>
+                    <p className="text-sm text-muted-foreground">{step.description}</p>
+                  </div>
                 </div>
                 {index < verificationSteps.length - 1 && (
                   <div className="hidden md:block absolute top-1/2 -right-4 w-8 h-[2px] bg-muted-foreground/20" />
