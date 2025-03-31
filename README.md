@@ -1,42 +1,54 @@
-# CancerLink project
+# Welcome to your Lovable project
 
-This is a project that we built for E-summit hackethon that is being organized in plaksha
+## Project info
 
-CancerLink is an innovative web platform designed to empower individuals navigating cancer care by providing essential resources, survivor support, and AI-driven assistance. The platform connects patients with cancer survivors, offers access to specialized treatment centers, facilitates symptom awareness, and integrates AI for preliminary symptom analysis.
+**URL**: https://lovable.dev/projects/dae621e5-4914-48af-a286-b50130459e9b
 
-## Core Features & Functionalities
+## How can I edit this code?
 
-### **1. Cancer Survivor Connection**
+There are several ways of editing your application.
 
-- A dedicated community feature enabling cancer patients to connect with survivors for firsthand insights, emotional support, and guidance.
-- Secure messaging and discussion forums to foster meaningful interactions.
+**Use Lovable**
 
-### **2. Cancer Symptom Database**
+Simply visit the [Lovable Project](https://lovable.dev/projects/dae621e5-4914-48af-a286-b50130459e9b) and start prompting.
 
-- A structured, easy-to-navigate repository of symptoms categorized by cancer type.
-- Search functionality to help users understand potential symptoms and recognize early warning signs.
+Changes made via Lovable will be committed automatically to this repo.
 
-### **3. Cancer Care Facility Comparison**
+**Use your preferred IDE**
 
-- A comparison tool allowing users to evaluate hospitals and clinics based on credibility, patient reviews, cost of treatment, years of operation, and available services.
+If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
 
-### **4. AI-Powered Cancer Care Center Recommender**
+The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 
-- Suggests nearby specialized cancer care centers for further evaluation.
+Follow these steps:
 
-### **5. Real-Time Cancer Treatment Cost Estimator**
+```sh
+# Step 1: Clone the repository using the project's Git URL.
+git clone <YOUR_GIT_URL>
 
-- An interactive tool that provides estimated cost ranges for various cancer treatments and procedures.
+# Step 2: Navigate to the project directory.
+cd <YOUR_PROJECT_NAME>
 
-## **Revenue Generation Strategies**
+# Step 3: Install the necessary dependencies.
+npm i
 
-1. **Doctor Subscription Model:** Healthcare professionals can register for a small fee to list their services.
-2. **Discounted Lab Tests:** Partner with diagnostic labs, allowing them to advertise services while providing discounts to patients. Revenue through commissions.
-3. **Pharmaceutical Partnerships:** Secure discounts on medications through collaborations with pharmaceutical companies.
-4. **Insurance Advertisements:** Insurance providers can promote their services on the platform.
-5. **Free Online Second Opinions:** Facilitate consultations, with monetization via premium services.
-6. **Staycation Rental Services:** Easy booking for accommodations tailored for cancer patients traveling for treatment.
-7. **Cloud Kitchen Partnerships:** Connect patients and their families with nearby food services offering customized, homely, and disease-appropriate meals with delivery options.
+# Step 4: Start the development server with auto-reloading and an instant preview.
+npm run dev
+```
+
+**Edit a file directly in GitHub**
+
+- Navigate to the desired file(s).
+- Click the "Edit" button (pencil icon) at the top right of the file view.
+- Make your changes and commit the changes.
+
+**Use GitHub Codespaces**
+
+- Navigate to the main page of your repository.
+- Click on the "Code" button (green button) near the top right.
+- Select the "Codespaces" tab.
+- Click on "New codespace" to launch a new Codespace environment.
+- Edit files directly within the Codespace and commit and push your changes once you're done.
 
 ## What technologies are used for this project?
 
@@ -47,3 +59,11 @@ This project is built with .
 - React
 - shadcn-ui
 - Tailwind CSS
+
+## How can I deploy this project?
+
+Simply open [Lovable](https://lovable.dev/projects/dae621e5-4914-48af-a286-b50130459e9b) and click on Share -> Publish.
+
+## I want to use a custom domain - is that possible?
+
+We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
