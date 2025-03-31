@@ -1,6 +1,6 @@
 # CancerLink
 
-Developers: Lakshya Gupta, Prajyot Raut
+**Developers:** Lakshya Gupta, Prajyot Raut
 
 CancerLink is an innovative web platform designed to empower individuals navigating cancer care by providing essential resources, survivor support, and AI-driven assistance. The platform connects patients with cancer survivors, offers access to specialized treatment centers, facilitates symptom awareness, and integrates AI for preliminary symptom analysis.
 
@@ -38,9 +38,9 @@ CancerLink is an innovative web platform designed to empower individuals navigat
 6. **Staycation Rental Services:** Easy booking for accommodations tailored for cancer patients traveling for treatment.
 7. **Cloud Kitchen Partnerships:** Connect patients and their families with nearby food services offering customized, homely, and disease-appropriate meals with delivery options.
 
-## What technologies are used for this project?
+## **Technologies Used**
 
-This project is built with
+This project is built with:
 
 - Vite
 - TypeScript
@@ -48,10 +48,7 @@ This project is built with
 - shadcn-ui
 - Tailwind CSS
 
-## How can I deploy this project?
+## **License**
 
-Simply open [Lovable](https://lovable.dev/projects/dae621e5-4914-48af-a286-b50130459e9b) and click on Share -> Publish.
+&copy; Lakshya G. All rights reserved.
 
-## I want to use a custom domain - is that possible?
-
-We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
