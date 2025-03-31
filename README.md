@@ -1,6 +1,6 @@
-# CancerLink project
+# CancerLink
 
-This is a project that we built for E-summit hackethon that is being organized in plaksha
+This is a project that we built for E-summit hackethon at Plaksha University.
 
 CancerLink is an innovative web platform designed to empower individuals navigating cancer care by providing essential resources, survivor support, and AI-driven assistance. The platform connects patients with cancer survivors, offers access to specialized treatment centers, facilitates symptom awareness, and integrates AI for preliminary symptom analysis.
 
@@ -40,7 +40,7 @@ CancerLink is an innovative web platform designed to empower individuals navigat
 
 ## What technologies are used for this project?
 
-This project is built with .
+This project is built with
 
 - Vite
 - TypeScript
