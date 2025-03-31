@@ -40,8 +40,6 @@ export async function analyzeDisease(
   // Replace with your actual API key or use environment variable
   const apiKey = "AIzaSyB7oEKFkbnSmVl711othG1YCcNJRjXbwXM";
 
-  console.log(request.)
-
   const endpoint =
     "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent";
 
