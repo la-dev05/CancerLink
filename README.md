@@ -1,6 +1,7 @@
 # CancerLink
 
-This is a project that we built for E-summit hackethon at Plaksha University.
+CanceLink project started at E-summit hackathon organized by Plaksha University.
+Developers: Lakshya Gupta, Prajyot Raut
 
 CancerLink is an innovative web platform designed to empower individuals navigating cancer care by providing essential resources, survivor support, and AI-driven assistance. The platform connects patients with cancer survivors, offers access to specialized treatment centers, facilitates symptom awareness, and integrates AI for preliminary symptom analysis.
 
