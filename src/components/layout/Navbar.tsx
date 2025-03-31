@@ -1,16 +1,22 @@
 import { useState, useRef, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Heart, MessageSquare, FileText, Search, Pill, TestTube, Stethoscope, Video, ChevronLeft, ChevronRight, Home, Shield } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { UserMenu } from "@/components/auth/UserMenu";
 import { useNavScroll } from "@/hooks/useNavScroll";
 
+const NAV_SCROLL_KEY = 'nav-scroll-position';
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
+  const scrollTrackRef = useRef<HTMLDivElement>(null);
   const { scrollRef, handleScroll } = useNavScroll();
+  const location = useLocation();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -46,6 +52,49 @@ const Navbar = () => {
         behavior: scrollRef.current.style.scrollBehavior as 'smooth' | 'auto'
       });
     }
+  };
+
+  const updateScrollProgress = () => {
+    if (scrollRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+      const scrollableWidth = scrollWidth - clientWidth;
+      const maxTranslation = scrollTrackRef.current?.clientWidth || 0;
+      const progress = (scrollLeft / scrollableWidth) * maxTranslation;
+      
+      requestAnimationFrame(() => {
+        setScrollProgress(progress);
+        localStorage.setItem(NAV_SCROLL_KEY, String(scrollLeft));
+      });
+    }
+  };
+
+  const handleThumbDrag = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    setIsDragging(true);
+
+    const track = scrollTrackRef.current;
+    const container = scrollRef.current;
+
+    if (!track || !container) return;
+
+    const trackRect = track.getBoundingClientRect();
+    const scrollableWidth = container.scrollWidth - container.clientWidth;
+
+    const handleMouseMove = (e: MouseEvent) => {
+      const trackWidth = trackRect.width;
+      const relativeX = e.clientX - trackRect.left;
+      const progress = Math.max(0, Math.min(1, relativeX / trackWidth));
+      container.scrollLeft = progress * scrollableWidth;
+    };
+
+    const handleMouseUp = () => {
+      setIsDragging(false);
+      document.removeEventListener("mousemove", handleMouseMove);
+      document.removeEventListener("mouseup", handleMouseUp);
+    };
+
+    document.addEventListener("mousemove", handleMouseMove);
+    document.addEventListener("mouseup", handleMouseUp);
   };
 
   useEffect(() => {
@@ -92,11 +141,14 @@ const Navbar = () => {
       scrollContainer.addEventListener('mousemove', handleDragMove);
       scrollContainer.addEventListener('touchmove', handleDragMove);
 
-      scrollContainer.addEventListener('scroll', () => {
+      const handleScrollUpdate = () => {
         handleScroll();
         checkScroll();
-      });
-      checkScroll();
+        updateScrollProgress();
+      };
+
+      scrollContainer.addEventListener('scroll', handleScrollUpdate);
+      handleScrollUpdate();
 
       return () => {
         scrollContainer.removeEventListener('mousedown', handleDragStart);
@@ -106,10 +158,22 @@ const Navbar = () => {
         scrollContainer.removeEventListener('touchend', handleDragEnd);
         scrollContainer.removeEventListener('mousemove', handleDragMove);
         scrollContainer.removeEventListener('touchmove', handleDragMove);
-        scrollContainer.removeEventListener('scroll', handleScroll);
+        scrollContainer.removeEventListener('scroll', handleScrollUpdate);
       };
     }
   }, [handleScroll]);
+
+  useEffect(() => {
+    const savedScrollPosition = localStorage.getItem(NAV_SCROLL_KEY);
+    if (savedScrollPosition && scrollRef.current) {
+      requestAnimationFrame(() => {
+        if (scrollRef.current) {
+          scrollRef.current.scrollLeft = Number(savedScrollPosition);
+          updateScrollProgress();
+        }
+      });
+    }
+  }, [location.pathname]);
 
   return (
     <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -122,56 +186,81 @@ const Navbar = () => {
         </div>
 
         {/* Desktop navigation */}
-        <div className="hidden md:flex md:items-center relative max-w-[800px]">
-          {/* Left scroll indicator */}
-          <div 
-            className={cn(
-              "absolute left-0 z-10 transition-opacity duration-200",
-              "flex items-center h-full cursor-pointer",
-              canScrollLeft ? "opacity-100" : "opacity-0 pointer-events-none"
-            )}
-            onClick={() => handleScrollDirection('left')}
-          >
-            <ChevronLeft className="w-5 h-5 text-foreground/80 animate-pulse-subtle" />
+        <div className="hidden md:flex md:items-center relative max-w-[800px] flex-col">
+          <div className="flex items-center relative w-full pt-1.5"> {/* Added pt-1.5 for top padding */}
+            {/* Left scroll indicator */}
+            <div 
+              className={cn(
+                "absolute left-0 z-10 transition-opacity duration-200",
+                "flex items-center h-full cursor-pointer",
+                canScrollLeft ? "opacity-100" : "opacity-0 pointer-events-none"
+              )}
+              onClick={() => handleScrollDirection('left')}
+            >
+              <ChevronLeft className="w-5 h-5 text-foreground/80 animate-pulse-subtle" />
+            </div>
+
+            <div 
+              ref={scrollRef}
+              className="flex items-center gap-6 overflow-x-auto px-4 py-1.5 no-scrollbar 
+                      snap-x snap-mandatory scroll-smooth touch-pan-x w-full"
+              style={{
+                maskImage: 'linear-gradient(to right, transparent, black 20%, black 80%, transparent)',
+                WebkitMaskImage: 'linear-gradient(to right, transparent, black 20%, black 80%, transparent)',
+                paddingInline: '2rem',
+                scrollbarWidth: 'none', // Hide scrollbar for Firefox
+              }}
+            >
+              {navLinks.map((link, index) => (
+                <Link
+                  key={link.name}
+                  to={link.path}
+                  className={cn(
+                    "flex items-center text-sm font-medium transition-all duration-300 transform",
+                    "hover:scale-105 snap-center backdrop-blur-sm rounded-lg px-4 py-2",
+                    "hover:shadow-lg hover:shadow-white/5 select-none whitespace-nowrap",
+                    "hover:opacity-100 hover:bg-background/60"
+                  )}
+                >
+                  {link.icon}
+                  {link.name}
+                </Link>
+              ))}
+            </div>
+
+            {/* Right scroll indicator */}
+            <div 
+              className={cn(
+                "absolute right-0 z-10 transition-opacity duration-200",
+                "flex items-center h-full cursor-pointer",
+                canScrollRight ? "opacity-100" : "opacity-0 pointer-events-none"
+              )}
+              onClick={() => handleScrollDirection('right')}
+            >
+              <ChevronRight className="w-5 h-5 text-foreground/80 animate-pulse-subtle" />
+            </div>
           </div>
 
-          <div 
-            ref={scrollRef}
-            className="flex items-center gap-6 overflow-x-auto px-4 py-2 no-scrollbar 
-                     snap-x snap-mandatory scroll-smooth touch-pan-x w-full"
-            style={{
-              maskImage: 'linear-gradient(to right, transparent, black 20%, black 80%, transparent)',
-              WebkitMaskImage: 'linear-gradient(to right, transparent, black 20%, black 80%, transparent)',
-              paddingInline: '2rem'
-            }}
+          {/* Scroll indicator */}
+          <div
+            ref={scrollTrackRef}
+            className="relative w-24 h-1 rounded-full mx-auto my-1 cursor-pointer bg-gray-300/30 
+                     border border-gray-200/20 backdrop-blur-sm px-0.5" // Changed my-2 to my-1
+            onMouseDown={handleThumbDrag}
+            style={{ } as React.CSSProperties}
           >
-            {navLinks.map((link, index) => (
-              <Link
-                key={link.name}
-                to={link.path}
-                className={cn(
-                  "flex items-center text-sm font-medium transition-all duration-300 transform",
-                  "hover:scale-105 snap-center backdrop-blur-sm rounded-lg px-4 py-2",
-                  "hover:shadow-lg hover:shadow-white/5 select-none whitespace-nowrap",
-                  "hover:opacity-100 hover:bg-background/60"
-                )}
-              >
-                {link.icon}
-                {link.name}
-              </Link>
-            ))}
-          </div>
-
-          {/* Right scroll indicator */}
-          <div 
-            className={cn(
-              "absolute right-0 z-10 transition-opacity duration-200",
-              "flex items-center h-full cursor-pointer",
-              canScrollRight ? "opacity-100" : "opacity-0 pointer-events-none"
-            )}
-            onClick={() => handleScrollDirection('right')}
-          >
-            <ChevronRight className="w-5 h-5 text-foreground/80 animate-pulse-subtle" />
+            <div
+              className={cn(
+                "absolute h-full bg-cancer-purple/60 rounded-full",
+                "transition-transform duration-75 ease-out transform-gpu",
+                isDragging ? "scale-y-150" : ""
+              )}
+              style={{
+                width: "20%",
+                transform: `translateX(${Math.min(scrollProgress, scrollTrackRef.current?.clientWidth - 20 || 0)}px)`,
+                willChange: 'transform'
+              }}
+            />
           </div>
         </div>
 
@@ -197,7 +286,7 @@ const Navbar = () => {
                 key={link.name}
                 to={link.path}
                 className="flex items-center py-3 px-2 text-sm font-medium text-muted-foreground hover:text-foreground 
-                         transition-colors rounded-md hover:bg-accent"
+                        transition-colors rounded-md hover:bg-accent"
                 onClick={() => setIsOpen(false)}
               >
                 {link.icon}
@@ -218,6 +307,11 @@ const Navbar = () => {
           </div>
         </div>
       </div>
+      <style>{`
+        .no-scrollbar::-webkit-scrollbar {
+          display: none; /* Hide scrollbar for Chrome, Safari, and Edge */
+        }
+      `}</style>
     </nav>
   );
 };
