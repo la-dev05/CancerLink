@@ -24,7 +24,7 @@ interface Doctor {
 const subscriptionPlans: SubscriptionPlan[] = [
   {
     name: "Basic",
-    price: 99,
+    price: 1000,
     description: "Perfect for getting started with online consultations",
     features: [
       "Up to 20 consultations/month",
@@ -35,7 +35,7 @@ const subscriptionPlans: SubscriptionPlan[] = [
   },
   {
     name: "Professional",
-    price: 199,
+    price: 3000,
     description: "For established doctors with regular online practice",
     features: [
       "Unlimited consultations",
@@ -47,7 +47,7 @@ const subscriptionPlans: SubscriptionPlan[] = [
   },
   {
     name: "Enterprise",
-    price: 299,
+    price: 5000,
     description: "Complete solution for medical institutions",
     features: [
       "Multiple doctor profiles",
@@ -237,7 +237,7 @@ const DoctorRegistration = () => {
                   <CardDescription>{plan.description}</CardDescription>
                 </CardHeader>
                 <CardContent className="flex-grow">
-                  <div className="text-3xl font-bold mb-6">${plan.price}/year</div>
+                  <div className="text-3xl font-bold mb-6">₹{plan.price}/year</div>
                   <ul className="space-y-2">
                     {plan.features.map((feature) => (
                       <li key={feature} className="flex items-center">
