@@ -1,6 +1,8 @@
 # CancerLink
 
-**Developers:** Lakshya Gupta, Prajyot Raut
+**Developer:** Lakshya Gupta
+
+Contributer: Prajyot Raut
 
 CancerLink is an innovative web platform designed to empower individuals navigating cancer care by providing essential resources, survivor support, and AI-driven assistance. The platform connects patients with cancer survivors, offers access to specialized treatment centers, facilitates symptom awareness, and integrates AI for preliminary symptom analysis.
 
